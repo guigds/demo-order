@@ -61,7 +61,7 @@ public class ProdutoServiceTest {
     }
 
     @Test
-    public void testCriarProdutoComErro() {
+    public void criarProdutDeveLancarExcecaoQaundoComErro() {
         when(produtoMapper.produtoDtoToProduto(produtoDto)).thenReturn(produto);
 
         doThrow(new RuntimeException("Erro ao salvar o produto")).when(produtoRepository).save(produto);
@@ -78,7 +78,7 @@ public class ProdutoServiceTest {
     }
 
     @Test
-    public void testListarProdutos() {
+    public void listarProdutosDeveRetornarListaDeProdutosQuandoSucesso() {
         List<Produto> produtos = Collections.singletonList(produto);
         when(produtoRepository.findAll()).thenReturn(produtos);
 
@@ -89,10 +89,10 @@ public class ProdutoServiceTest {
     }
 
     @Test
-    public void testValidaProdutosExistentes() {
+    public void validaProdutosExistentesDeveRetornarProdutosQuandoSucesso() {
         Pedido pedido = new Pedido();
         pedido.setProdutos(Collections.singletonList(produto));
-        
+
         when(produtoRepository.findById(produto.getId())).thenReturn(Optional.of(produto));
 
         produtoService.validaProdutosExistentes(pedido);
@@ -101,10 +101,10 @@ public class ProdutoServiceTest {
     }
 
     @Test
-    public void testValidaProdutosExistentes_ProdutoNotFoundException() {
+    public void validaProdutosExistentesDeveLancarExcecaoQuandoProdutoNotFoundException() {
         Pedido pedido = new Pedido();
         pedido.setProdutos(Collections.singletonList(produto));
-        
+
         when(produtoRepository.findById(produto.getId())).thenReturn(Optional.empty());
 
         assertThrows(ProdutoNotFoundException.class, () -> produtoService.validaProdutosExistentes(pedido));
