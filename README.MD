@@ -24,5 +24,5 @@ Uma breve descrição do objetivo do projeto e das funcionalidades principais.
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/usuario/nome-do-projeto.git
-   cd nome-do-projeto
+   git clone https://github.com/guigds/demo-order.git
+   cd demo-order
