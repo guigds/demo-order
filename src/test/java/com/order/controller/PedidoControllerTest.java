@@ -33,7 +33,7 @@ class PedidoControllerTest {
     @Test
     void testListarPedidos() {
         // Arrange
-        PedidoDto pedido1 = new PedidoDto();  // Configure o PedidoDto com dados de teste
+        PedidoDto pedido1 = new PedidoDto();
         PedidoDto pedido2 = new PedidoDto();
         List<PedidoDto> pedidoList = Arrays.asList(pedido1, pedido2);
         when(pedidoService.findAll()).thenReturn(pedidoList);
@@ -49,7 +49,7 @@ class PedidoControllerTest {
     @Test
     void testCriarPedido() {
         // Arrange
-        PedidoRequestDto pedidoRequestDto = new PedidoRequestDto();  // Configure o PedidoRequestDto com dados de teste
+        PedidoRequestDto pedidoRequestDto = new PedidoRequestDto();
         doNothing().when(pedidoService).criarPedido(pedidoRequestDto);
 
         // Act
