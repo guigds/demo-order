@@ -1,17 +1,11 @@
 # Nome do Projeto
 
-Uma breve descrição do objetivo do projeto e das funcionalidades principais.
+Projeto responsável por gerenciar pedidos.
 
 ## Índice
 
 - [Requisitos](#requisitos)
 - [Instalação](#instalação)
-- [Configuração](#configuração)
-- [Uso](#uso)
-- [Testes](#testes)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Contato](#contato)
 
 ## Requisitos
 
