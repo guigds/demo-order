@@ -2,6 +2,7 @@ package com.order.config;
 
 import com.order.dto.ErrorResponseDto;
 import com.order.dto.ValidationErrorResponseDto;
+import com.order.exception.ProdutoDuplicadoException;
 import com.order.exception.ProdutoNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ProdutoNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ErrorResponseDto> handleValidationExceptions(ProdutoNotFoundException ex) {
+        ErrorResponseDto response = ErrorResponseDto.builder()
+                .message(SOLICITACAO_NAO_CONCLUIDA)
+                .detail(ex.getMessage() + ". Por favor, verifique se os dados estão corretos e tente novamente.")
+                .build();
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProdutoDuplicadoException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponseDto> handleValidationExceptions(ProdutoDuplicadoException ex) {
         ErrorResponseDto response = ErrorResponseDto.builder()
                 .message(SOLICITACAO_NAO_CONCLUIDA)
                 .detail(ex.getMessage() + ". Por favor, verifique se os dados estão corretos e tente novamente.")
